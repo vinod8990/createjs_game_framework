@@ -1,0 +1,814 @@
+{
+    "project": {},
+    "files": {
+        "Assets.js": {
+            "name": "Assets.js",
+            "modules": {},
+            "classes": {
+                "Assets": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "CGFW.js": {
+            "name": "CGFW.js",
+            "modules": {
+                "CGFW": 1
+            },
+            "classes": {
+                "Game": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "Scene.js": {
+            "name": "Scene.js",
+            "modules": {},
+            "classes": {
+                "Scene": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {
+        "CGFW": {
+            "name": "CGFW",
+            "submodules": {},
+            "classes": {
+                "Assets": 1,
+                "Game": 1,
+                "Scene": 1
+            },
+            "fors": {},
+            "namespaces": {},
+            "tag": "module",
+            "file": "Scene.js",
+            "line": 12,
+            "description": "CreateJS Game Framework Module.\nAfter you create a new game instance, you can get the current game instance from anywhere by accessing CGFW.gameInstance property"
+        }
+    },
+    "classes": {
+        "Assets": {
+            "name": "Assets",
+            "shortname": "Assets",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "CGFW",
+            "file": "Assets.js",
+            "line": 12,
+            "description": "This Assets class is responsible for preloading assets and make it available from preloadjs. \nThis class can't be instantiated. All methods and properties are static."
+        },
+        "Game": {
+            "name": "Game",
+            "shortname": "Game",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "CGFW",
+            "namespace": "",
+            "file": "CGFW.js",
+            "line": 18,
+            "description": "The base Game class. You must extend this class to create your game class",
+            "is_constructor": 1
+        },
+        "Scene": {
+            "name": "Scene",
+            "shortname": "Scene",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "module": "CGFW",
+            "namespace": "",
+            "file": "Scene.js",
+            "line": 12,
+            "description": "The base class for a game scene. All game scenes has to be extended from this. \nAll overriden methods must have a super call before all except for onSave method.",
+            "is_constructor": 1
+        }
+    },
+    "classitems": [
+        {
+            "file": "Assets.js",
+            "line": 18,
+            "description": "Loaded item count",
+            "itemtype": "property",
+            "name": "loaded",
+            "type": "int",
+            "default": "0",
+            "static": 1,
+            "class": "Assets"
+        },
+        {
+            "file": "Assets.js",
+            "line": 26,
+            "description": "Total item count",
+            "itemtype": "property",
+            "name": "total",
+            "type": "int",
+            "default": "0",
+            "static": 1,
+            "class": "Assets"
+        },
+        {
+            "file": "Assets.js",
+            "line": 34,
+            "description": "CreateJS PreloadJS instance",
+            "itemtype": "property",
+            "name": "preloader",
+            "type": "createjs.Preloader",
+            "static": 1,
+            "class": "Assets"
+        },
+        {
+            "file": "Assets.js",
+            "line": 41,
+            "description": "Load the assets in the manifest given.",
+            "itemtype": "method",
+            "name": "load",
+            "return": {
+                "description": "void"
+            },
+            "params": [
+                {
+                    "name": "manifest",
+                    "description": "An array of objects with id and src attributes",
+                    "type": "Object"
+                },
+                {
+                    "name": "onComplete",
+                    "description": "Callback which will be called after loading all assets.",
+                    "type": "Function",
+                    "optional": true
+                }
+            ],
+            "class": "Assets"
+        },
+        {
+            "file": "Assets.js",
+            "line": 56,
+            "description": "Fires when a single file load is completed and this increments the loaded count",
+            "itemtype": "method",
+            "name": "_onFileLoad",
+            "return": {
+                "description": "void"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "Assets"
+        },
+        {
+            "file": "Assets.js",
+            "line": 65,
+            "description": "Get the loaded asset from createjs preloader.",
+            "itemtype": "method",
+            "name": "get",
+            "return": {
+                "description": "*\tThe loaded asset."
+            },
+            "params": [
+                {
+                    "name": "id",
+                    "description": "The id used in the manifest file",
+                    "type": "String"
+                }
+            ],
+            "class": "Assets"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 25,
+            "description": "Contains all stages that are added.",
+            "itemtype": "property",
+            "name": "stages",
+            "type": "Object",
+            "default": "{}",
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 32,
+            "description": "Holds the currentScene instance",
+            "itemtype": "property",
+            "name": "currentScene",
+            "type": "Scene",
+            "default": "null",
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 39,
+            "description": "All saved scenes. This is used internally when switching between scenes.",
+            "itemtype": "property",
+            "name": "savedScenes",
+            "type": "Object",
+            "default": "{}",
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 46,
+            "description": "Default framerate used. Change this before calling init().",
+            "itemtype": "property",
+            "name": "defaultFPS",
+            "type": "int",
+            "default": "60",
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 53,
+            "description": "This is used internally when switching scenes with overlay to draw the display objects in order.",
+            "itemtype": "property",
+            "name": "stageDepthOrder",
+            "type": "Array",
+            "default": "[]",
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 60,
+            "description": "The game fit mode used. Accepted values are \"noScale\", \"exactFit\", \"showAll\", \"noBorder\".\n --------------\n - showAll\t\t-\tmakes the entire game visible in the display area without distortion while maintaining the original aspect ratio. Borders can appear on two sides.\n - exactFit\t\t-\tmakes the entire game visible in the display area without trying to preserve the original aspect ratio. Distortion can occur.\n - noScale\t\t-\tmakes the size of the game fixed, so that it remains unchanged. Cropping may occur if the window is smaller than the game.\n - noBorder \t-\tscales the game to fill the specified area, without distortion but possibly with some cropping, while maintaining the original aspect ratio.\n --------------",
+            "itemtype": "property",
+            "name": "scaleMode",
+            "type": "String",
+            "default": "showAll",
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 73,
+            "description": "The game width used for calculating logic. Even if the canvas is resized, this position will remain static. \nFor a game resized to 1200x720, 800px in game is 1200px in display. You can resize the game by changing canvas width and height values.",
+            "itemtype": "property",
+            "name": "gameWidth",
+            "type": "int",
+            "default": "800",
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 81,
+            "description": "The game height used for calculating logic. Even if the canvas is resized, this position will remain static. \nFor a game resized to 1200x720, 480px in game is 720px in display. You can resize the game by changing canvas width and height values.",
+            "itemtype": "property",
+            "name": "gameHeight",
+            "type": "int",
+            "default": "480",
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 89,
+            "description": "The display width of the complete game. The gameWidth and gameHeight will be scaled to displayWidth and displayHeight respectively.  \nThe mode of scaling is determined by the scaleMode property.",
+            "itemtype": "property",
+            "name": "displayWidth",
+            "type": "int",
+            "default": "800",
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 97,
+            "description": "The display height of the complete game. The gameWidth and gameHeight will be scaled to displayWidth and displayHeight respectively.  \nThe mode of scaling is determined by the scaleMode property.",
+            "itemtype": "property",
+            "name": "displayHeight",
+            "type": "int",
+            "default": "480",
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 105,
+            "description": "The max display width of the complete game. The game will not be scaled above this limit",
+            "itemtype": "property",
+            "name": "displayMaxWidth",
+            "type": "int",
+            "default": "1200",
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 112,
+            "description": "The max display height of the complete game. The game will not be scaled above this limit",
+            "itemtype": "property",
+            "name": "displayMaxHeight",
+            "type": "int",
+            "default": "720",
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 119,
+            "description": "The horizontal scale of the stage. This is used internally to calculate game to canvas and canvas to game positions.",
+            "itemtype": "property",
+            "name": "stageScaleX",
+            "type": "Number",
+            "default": "1",
+            "access": "protected",
+            "tagname": "",
+            "readonly": "",
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 128,
+            "description": "The vertical scale of the stage. This is used internally to calculate game to canvas and canvas to game positions",
+            "itemtype": "property",
+            "name": "stageScaleY",
+            "type": "Number",
+            "default": "1",
+            "access": "protected",
+            "tagname": "",
+            "readonly": "",
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 140,
+            "description": "Original gameWidth and gameHeight are stored internally for resizing",
+            "itemtype": "property",
+            "name": "_gameWidth;",
+            "type": "int",
+            "access": "private",
+            "tagname": "",
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 147,
+            "description": "Original gameWidth and gameHeight are stored internally for resizing",
+            "itemtype": "property",
+            "name": "_gameHeight;",
+            "type": "int",
+            "access": "private",
+            "tagname": "",
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 154,
+            "description": "Initialize the Game. This will start the game ticker with defaultFPS.",
+            "itemtype": "method",
+            "name": "init",
+            "return": {
+                "description": "void"
+            },
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 170,
+            "description": "Calls when a window.resize or orientationchange event occurs, this in turn calls onResize()",
+            "itemtype": "method",
+            "name": "_onResize",
+            "return": {
+                "description": "void"
+            },
+            "access": "private",
+            "tagname": "",
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 180,
+            "description": "Scale the canvases according to the parameters defined (gameWidth, gameHeight, displayWidth, displayHeight, scaleMode).",
+            "itemtype": "method",
+            "name": "scaleView",
+            "return": {
+                "description": "void"
+            },
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 282,
+            "description": "Checks if this is a device or desktop",
+            "itemtype": "method",
+            "name": "isDevice",
+            "return": {
+                "description": "True for device and False for desktop",
+                "type": "Boolean"
+            },
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 294,
+            "description": "Convert screen X co-ordinate value to game X. When we resize the canvas, the mouse co-ordinates won't \ncorrespond to the game co-ordinates. So when we need to get the mouseX and mouseY points on the game, use this.",
+            "itemtype": "method",
+            "name": "screenToGameX",
+            "params": [
+                {
+                    "name": "Screen",
+                    "description": "X position to be converted",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 304,
+            "description": "Convert screen Y co-ordinate value to game Y. When we resize the canvas, the mouse co-ordinates won't \ncorrespond to the game co-ordinates. So when we need to get the mouseX and mouseY points on the game, use this.",
+            "itemtype": "method",
+            "name": "screenToGameY",
+            "params": [
+                {
+                    "name": "Screen",
+                    "description": "Y position to be converted",
+                    "type": "Number"
+                }
+            ],
+            "return": {
+                "description": "",
+                "type": "Number"
+            },
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 316,
+            "description": "Add a new stage. The order of the addition matters so that add all stages according to their depth. \nAdd background stages first and foreground stages last.",
+            "itemtype": "method",
+            "name": "addStage",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "Id of the canvas to where this stage is to be added. You should create one stage for each canvas used.",
+                    "type": "String"
+                },
+                {
+                    "name": "autoUpdate",
+                    "description": "Determines if the stage is updated on every game tick.",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "void"
+            },
+            "example": [
+                "\n \tthis.addStage('bgCanvas',false);\n \tthis.addStage('mainCanvas',true);"
+            ],
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 338,
+            "description": "Get the createjs.Stage object by name",
+            "itemtype": "method",
+            "name": "getStageByName",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name(which is used to add the stage) to lookup",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "CreateJS Stage Object",
+                "type": "createjs.Stage"
+            },
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 347,
+            "description": "Update the stage",
+            "itemtype": "method",
+            "name": "updateStage",
+            "params": [
+                {
+                    "name": "name",
+                    "description": "The name of the stage which is to be updated.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "void"
+            },
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 356,
+            "description": "Update all stages",
+            "itemtype": "method",
+            "name": "updateAllStages",
+            "return": {
+                "description": "void"
+            },
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 367,
+            "description": "Change scene. This will dispose the current scene and adds a new scene.",
+            "itemtype": "method",
+            "name": "changeScene",
+            "params": [
+                {
+                    "name": "SceneClass",
+                    "description": "The Scene class to which the Game to be changed into.",
+                    "type": "Scene"
+                }
+            ],
+            "return": {
+                "description": "void"
+            },
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 382,
+            "description": "Switch to a new scene. This will save the current scene and then changes to the specified scene. \nBy default, calling this will remove the current scene from display and then adds the new scene. \nBut you can keep it below the new scene by passing overlay parameter as true. \nIn both conditions, the saved scene will not be updated.",
+            "itemtype": "method",
+            "name": "switchScene",
+            "params": [
+                {
+                    "name": "SceneClass",
+                    "description": "The Scene class to which the Game to be switched into.",
+                    "type": "Scene"
+                },
+                {
+                    "name": "overlay",
+                    "description": "If true, the new scene will be added over the old scene.",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "void"
+            },
+            "example": [
+                "\n \tthis.switchScene(PauseScene,true);\t//Add pause scene above the current scene"
+            ],
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 399,
+            "description": "Save the current scene. This is called internally when switchScene is called.",
+            "itemtype": "method",
+            "name": "saveScene",
+            "params": [
+                {
+                    "name": "overlay",
+                    "description": "If true, the scene won't be removed from display.",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "void"
+            },
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 413,
+            "description": "Restore a previously saved scene. This will remove the current scene and switches back to a saved scene.",
+            "itemtype": "method",
+            "name": "restoreScene",
+            "params": [
+                {
+                    "name": "SceneClass",
+                    "description": "The old saved scene class to which the Game is to be restored.",
+                    "type": "Scene"
+                }
+            ],
+            "return": {
+                "description": "void"
+            },
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 432,
+            "description": "This will be called when a window resize is happened. This method will call current scene's onResize method.",
+            "itemtype": "method",
+            "name": "onResize",
+            "return": {
+                "description": "void"
+            },
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 447,
+            "description": "This is the game loop. On every createjs Ticker tick, this method is called.  \nThis will update all auto-updatable stages.",
+            "itemtype": "method",
+            "name": "onUpdate",
+            "return": {
+                "description": "void"
+            },
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 469,
+            "description": "The tick method. This will call onUpdate on every timer tick.",
+            "itemtype": "method",
+            "name": "tick",
+            "return": {
+                "description": "void"
+            },
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "CGFW.js",
+            "line": 478,
+            "description": "Shows an fps display on top left of the first canvas. \nBy default, it will display measured framerate and target framerate.",
+            "itemtype": "method",
+            "name": "showDebug",
+            "return": {
+                "description": "void"
+            },
+            "class": "Game",
+            "module": "CGFW"
+        },
+        {
+            "file": "Scene.js",
+            "line": 19,
+            "description": "This will hold the references to the containers added in current scene instance. \nFor every stage created in the game, a container is created and added to the stage.\nThese are key value pairs where key is the name of the stage while value is the container itself.",
+            "itemtype": "property",
+            "name": "containers",
+            "type": "Object",
+            "default": "{}",
+            "class": "Scene",
+            "module": "CGFW"
+        },
+        {
+            "file": "Scene.js",
+            "line": 31,
+            "description": "When a scene is added to the display, this is called at once.\nOverride this method in the child classes with a super call on first line.",
+            "itemtype": "method",
+            "name": "onInit",
+            "return": {
+                "description": "void"
+            },
+            "class": "Scene",
+            "module": "CGFW"
+        },
+        {
+            "file": "Scene.js",
+            "line": 47,
+            "description": "On every window resize event, this method is called. \nThis is useful if we need to do something on a window.resize event. \nOverride this method in the child classes with a super call on first line.",
+            "itemtype": "method",
+            "name": "onResize",
+            "return": {
+                "description": "void"
+            },
+            "class": "Scene",
+            "module": "CGFW"
+        },
+        {
+            "file": "Scene.js",
+            "line": 58,
+            "description": "Before saving a scene, this method is called. If overlay is true, then all containers of all stages are collected and added to\n the first added stage. If overlay is false, all containers are simply removed from display. \n Note that, this will only be removed from display and not from memory to make it restore later.\n Override this method and do something if needed before the super call.",
+            "itemtype": "method",
+            "name": "onSave",
+            "params": [
+                {
+                    "name": "overlay",
+                    "description": "",
+                    "type": "Boolean"
+                }
+            ],
+            "return": {
+                "description": "void"
+            },
+            "class": "Scene",
+            "module": "CGFW"
+        },
+        {
+            "file": "Scene.js",
+            "line": 83,
+            "description": "This will be called after the scene is restored from memory. \nAll containers are added to their corresponding stages.\nOverride this method in the child classes with a super call on first line.",
+            "itemtype": "method",
+            "name": "onRestore",
+            "return": {
+                "description": "void"
+            },
+            "class": "Scene",
+            "module": "CGFW"
+        },
+        {
+            "file": "Scene.js",
+            "line": 97,
+            "description": "This is the loop which is called on every tick.\nOverride this method in the child classes with a super call on first line.",
+            "itemtype": "method",
+            "name": "onUpdate",
+            "return": {
+                "description": "void"
+            },
+            "class": "Scene",
+            "module": "CGFW"
+        },
+        {
+            "file": "Scene.js",
+            "line": 107,
+            "description": "Add a display object to the container. This immediately updates the corresponding stage if its stage's autoUpdate is false.",
+            "itemtype": "method",
+            "name": "addChild",
+            "params": [
+                {
+                    "name": "displayObject",
+                    "description": "The display object to be added to the container.",
+                    "type": "createjs.DisplayObject"
+                },
+                {
+                    "name": "containerName",
+                    "description": "The container's name to where the display object is to be added.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "void"
+            },
+            "class": "Scene",
+            "module": "CGFW"
+        },
+        {
+            "file": "Scene.js",
+            "line": 120,
+            "description": "Remove the display object from its container. This immediately updates the corresponding stage if its stage's autoUpdate is false.",
+            "itemtype": "method",
+            "name": "removeChild",
+            "params": [
+                {
+                    "name": "displayObject",
+                    "description": "The display object which is to be removed.",
+                    "type": "createjs.DisplayObject"
+                },
+                {
+                    "name": "containerName",
+                    "description": "The container's name from where the display object is to be removed.",
+                    "type": "String"
+                }
+            ],
+            "return": {
+                "description": "void"
+            },
+            "class": "Scene",
+            "module": "CGFW"
+        },
+        {
+            "file": "Scene.js",
+            "line": 134,
+            "description": "This will be called when a scene is disposed. All containers and their immediate children are removed. \nOverride this method in the child classes with a super call on first line.",
+            "itemtype": "method",
+            "name": "onExit",
+            "return": {
+                "description": "void"
+            },
+            "class": "Scene",
+            "module": "CGFW"
+        }
+    ],
+    "warnings": [
+        {
+            "message": "replacing incorrect tag: returns with return",
+            "line": " CGFW.js:282"
+        }
+    ]
+}
