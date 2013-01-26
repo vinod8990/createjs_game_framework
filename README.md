@@ -3,4 +3,6 @@ createjs_game_framework
 
 This is a simple createjs game framework with scenes,layers and manages game display resizing.
 
-You can find tutorials on using this framework at www.codetuto.com
+This framework will be used in an upcoming createjs game creator from me named 'GameCreateJS'.
+
+
